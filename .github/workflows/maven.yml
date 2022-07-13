@@ -29,11 +29,12 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
         #SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }} 
         #SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-      run: mvn clean verify 
+      run: mvn clean verify -Dsonar.projectKey=local.test.sonar
       
     - name: SonarQube Scan
       uses: sonarsource/sonarqube-scan-action@master
       env:
+        SONAR_PROJECT_KEY: local.test.sonar
         sonar.projectKey: local.test.sonar
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
@@ -42,5 +43,6 @@ jobs:
       # Force to fail step after specific time
       timeout-minutes: 5
       env:
+       SONAR_PROJECT_KEY: local.test.sonar
        sonar.projectKey: local.test.sonar
        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
