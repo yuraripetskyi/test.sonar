@@ -38,6 +38,8 @@ jobs:
         sonar.projectKey: local.test.sonar
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+        SONAR_BINARIES: targer
+        SONAR_SOURCES: src
     - name: SonarQube Quality Gate check
       uses: sonarsource/sonarqube-quality-gate-action@master
       # Force to fail step after specific time
@@ -46,3 +48,6 @@ jobs:
        SONAR_PROJECT_KEY: local.test.sonar
        sonar.projectKey: local.test.sonar
        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+       SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+       SONAR_BINARIES: targer
+       SONAR_SOURCES: src
