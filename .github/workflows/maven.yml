@@ -40,6 +40,7 @@ jobs:
         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         SONAR_JAVA_BINARIES: '**/target/classes'
         sonar.java.binaries: '**/target/classes'
+        EXTRA_ARGS: -Dsonar.java.binaries=\"target/classes\"
         SONAR_SOURCES: src
     - name: SonarQube Quality Gate check
       uses: sonarsource/sonarqube-quality-gate-action@master
