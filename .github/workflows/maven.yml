@@ -38,7 +38,7 @@ jobs:
         sonar.projectKey: local.test.sonar
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-        SONAR_BINARIES: targer
+        SONAR_JAVA_BINARIES: targer
         SONAR_SOURCES: src
     - name: SonarQube Quality Gate check
       uses: sonarsource/sonarqube-quality-gate-action@master
@@ -49,5 +49,5 @@ jobs:
        sonar.projectKey: local.test.sonar
        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-       SONAR_BINARIES: targer
+       SONAR_JAVA_BINARIES: targer
        SONAR_SOURCES: src
