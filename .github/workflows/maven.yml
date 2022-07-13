@@ -29,4 +29,16 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
         #SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }} 
         #SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-      run: mvn clean verify sonar:sonar -Dsonar.projectKey=local.test.sonar -Dsonar.host.url=http://localhost:9000 -Dsonar.login=sqp_084011786531bb3173bc6dc0d5215f1cc0a9fbd2
+      run: mvn clean verify 
+      
+    - name: SonarQube Scan
+      uses: sonarsource/sonarqube-scan-action@master
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+    - name: SonarQube Quality Gate check
+      uses: sonarsource/sonarqube-quality-gate-action@master
+      # Force to fail step after specific time
+      timeout-minutes: 5
+      env:
+       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
